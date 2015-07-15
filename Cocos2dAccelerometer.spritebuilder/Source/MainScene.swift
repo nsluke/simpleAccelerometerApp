@@ -1,32 +1,28 @@
 import Foundation
 import CoreMotion
 
-
 class MainScene: CCNode {
 
     var xValString: String!
     var yValString: String!
     var zValString: String!
-    let motionManager: CMMotionManager! = CMMotionManager()
     
     weak var xValLabel: CCLabelTTF!
     weak var yValLabel: CCLabelTTF!
     weak var zValLabel: CCLabelTTF!
 
+    let motionKit = MotionKit()
     
     func didLoadFromCCB() {
         
-
-//        if motionManager.accelerometerAvailable {
-            motionManager.startAccelerometerUpdates()
-//        motionManager.accelerometerActive = true;
-//        }
-        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue()) {
-            (data, error) in
-            let currentX = self.yValLabel.position.x
-            let currentY = self.yValLabel.position.y
-        }
-        
+    motionKit.getAccelerometerValues (interval: 0.5){
+        (x, y, z) in
+        //Do whatever you want with the x, y and z values
+//        println("X: \(x) Y: \(y) Z: \(z)")
+        self.xValLabel.string = "X: \(x)"
+        self.yValLabel.string = "Y: \(y)"
+        self.zValLabel.string = "Z: \(z)"
+    }
 
         
     }
@@ -40,12 +36,9 @@ class MainScene: CCNode {
         
 //        var accelerometerData: CMAccelerometerData = motionManager.accelerometerData
         println("Motion =")
-        println(motionManager.accelerometerData)
         
         
-        xValLabel.string = ""
-        yValLabel.string = ""
-        zValLabel.string = ""
+
         
         
         
