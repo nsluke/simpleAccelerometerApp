@@ -1,0 +1,3 @@
+[submodule "Cocos2dAccelerometer.spritebuilder/MotionKit"]
+	path = Cocos2dAccelerometer.spritebuilder/MotionKit
+	url = git://github.com/MHaroonBaig/MotionKit.git
